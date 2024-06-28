@@ -10,7 +10,7 @@ const rememberMe = ref(false)
       </NuxtLink>
       <div class="mt-8">
         <h1 class="text-4xl text-center font-bold">Se connecter</h1>
-        <p class="mt-2 text-center text-neutral-500">
+        <p class="mt-2 text-center text-neutral-600">
           Veuillez entrer vos informations.
         </p>
       </div>

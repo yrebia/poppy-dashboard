@@ -30,7 +30,7 @@ defineProps<{
       <HeadlessListboxOptions
         class="absolute w-full max-h-60 p-1 mt-2 rounded-md ring-1 shadow-md overflow-auto bg-white ring-neutral-200"
       >
-        <p v-if="name" class="p-2 text-xs text-neutral-500">{{ name }}</p>
+        <p v-if="name" class="p-2 text-xs text-neutral-600">{{ name }}</p>
         <HeadlessListboxOption
           v-for="option in options"
           v-slot="{ active, selected }"

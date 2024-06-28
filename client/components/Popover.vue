@@ -10,7 +10,7 @@
       enter-from-class="opacity-0 -translate-y-1 scale-95"
     >
       <HeadlessPopoverPanel
-        class="absolute right-0 z-10 mt-3 w-[24rem] rounded-lg ring-1 shadow-lg bg-white ring-neutral-200"
+        class="absolute right-0 z-10 mt-3 rounded-lg ring-1 shadow-lg bg-white ring-neutral-200"
       >
         <slot name="panel" />
       </HeadlessPopoverPanel>
