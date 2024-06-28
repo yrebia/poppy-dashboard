@@ -14,7 +14,7 @@ withDefaults(
 
 <template>
   <div class="flex flex-col gap-1">
-    <label v-if="label" :for="id" class="text-sm font-medium text-neutral-500">
+    <label v-if="label" :for="id" class="text-sm font-medium">
       {{ label }}
     </label>
     <input
