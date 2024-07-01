@@ -1,5 +1,5 @@
 <template>
-  <HeadlessPopover v-slot="{ open }" class="relative">
+  <HeadlessPopover class="relative">
     <HeadlessPopoverButton as="template">
       <slot />
     </HeadlessPopoverButton>

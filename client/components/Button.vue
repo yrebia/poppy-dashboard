@@ -5,10 +5,12 @@ withDefaults(
     size?: 'sm' | 'md' | 'lg' | 'icon'
     rounded?: boolean
     href?: string
+    type?: 'button' | 'submit' | 'reset'
   }>(),
   {
     variant: 'primary',
-    rounded: false
+    rounded: false,
+    type: 'button'
   }
 )
 </script>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-const id = useId()
-
-withDefaults(
+const props = withDefaults(
   defineProps<{
+    id?: string
     type?: 'text' | 'password' | 'email'
     label?: string
   }>(),
@@ -10,6 +9,8 @@ withDefaults(
     type: 'text'
   }
 )
+
+const id = props.id ?? useId()
 </script>
 
 <template>

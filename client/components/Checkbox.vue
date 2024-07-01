@@ -1,10 +1,11 @@
 <script setup lang="ts">
-const id = useId()
-
-defineProps<{
+const props = defineProps<{
+  id?: string
   label?: string
-  modelValue: boolean
+  modelValue?: boolean
 }>()
+
+const id = props.id ?? useId()
 </script>
 
 <template>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-const value = defineModel<string>({
-  required: true
-})
+import { capitalize } from 'vue'
+
+const value = defineModel<string>()
 
 defineProps<{
   name?: string
-  options?: string[]
+  options?: { value: string; onClick?: () => void }[]
+  placeholder?: string
 }>()
 </script>
 
@@ -14,7 +15,14 @@ defineProps<{
     <HeadlessListboxButton
       class="flex items-center justify-between w-full h-full px-2 rounded-md ring-1 hover:bg-neutral-50 ring-neutral-200 transition-colors"
     >
-      <span class="block text-sm font-medium truncate">{{ value }}</span>
+      <span
+        v-if="placeholder && !options?.some((option) => option.value === value)"
+        class="block text-sm font-medium truncate text-neutral-600"
+        >{{ placeholder }}</span
+      >
+      <span v-else class="block text-sm font-medium truncate">{{
+        value ? capitalize(value) : ''
+      }}</span>
       <Icon
         name="lucide:chevrons-up-down"
         size="14"
@@ -34,15 +42,16 @@ defineProps<{
         <HeadlessListboxOption
           v-for="option in options"
           v-slot="{ active, selected }"
-          :key="option"
-          :value="option"
+          :key="option.value"
+          :value="option.value"
           as="template"
         >
           <li
+            @click="option.onClick ? option.onClick() : () => {}"
             :class="{ 'bg-neutral-100': active }"
             class="flex items-center justify-between h-8 px-2 py-1 rounded cursor-pointer transition-colors"
           >
-            <span class="text-sm">{{ option }}</span>
+            <span class="text-sm">{{ capitalize(option.value) }}</span>
             <Icon
               v-if="selected"
               name="lucide:check"
@@ -51,12 +60,7 @@ defineProps<{
             />
           </li>
         </HeadlessListboxOption>
-        <button
-          class="flex items-center gap-2 text-sm w-full h-8 px-2 py-1 rounded cursor-pointer hover:bg-neutral-100 transition-colors"
-        >
-          <Icon name="lucide:circle-plus" size="14" class="text-primary-600" />
-          <span>Ajouter un enfant</span>
-        </button>
+        <slot name="trailing" />
       </HeadlessListboxOptions>
     </Transition>
   </HeadlessListbox>
