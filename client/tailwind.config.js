@@ -7,6 +7,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['DM Sans', ...fontFamily.sans],
+        mono: ['DM Mono', ...fontFamily.mono]
       },
       colors: {
         primary: sky

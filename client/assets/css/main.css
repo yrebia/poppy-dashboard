@@ -1,3 +1,7 @@
 :root {
 	color: #171717;
 }
+
+code {
+	@apply px-1 rounded bg-gray-100;
+}

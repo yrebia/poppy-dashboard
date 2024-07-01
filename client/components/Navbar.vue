@@ -6,7 +6,6 @@ const child = ref(route.params.name as string)
 watch(
   () => route.params.name,
   (name) => {
-    console.log(name)
     child.value = name ? (name as string) : ''
   }
 )
@@ -17,7 +16,7 @@ watch(
     class="flex items-center h-16 px-6 bg-white border-b border-neutral-200"
   >
     <NuxtLink to="/dashboard">
-      <img src="/logo.png" width="40" />
+      <NuxtImg src="/logo.png" width="40" />
     </NuxtLink>
     <nav class="flex flex-1 items-center justify-between h-16 pl-6">
       <Select
