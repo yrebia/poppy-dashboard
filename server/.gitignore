@@ -13,3 +13,5 @@ logs
 .npm
 
 .env
+
+.netlify

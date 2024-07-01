@@ -16,6 +16,7 @@
     "express": "^4.19.2",
     "mongoose": "^8.4.4",
     "netlify": "^13.1.20",
+    "netlify-cli": "^17.31.0",
     "netlify-lambda": "^2.0.16",
     "serverless-http": "^3.2.0"
   },
