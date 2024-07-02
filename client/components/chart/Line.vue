@@ -9,9 +9,9 @@ import {
   PointElement,
   CategoryScale,
   LinearScale,
+  Filler,
   type ChartOptions,
-  type ChartData as ChartJSData,
-  Filler
+  type ChartData as ChartJSData
 } from 'chart.js'
 import colors from 'tailwindcss/colors'
 
@@ -69,43 +69,29 @@ const chartOptions = computed<ChartOptions<'line'>>(() => ({
     }
   },
   plugins: {
-    legend: {
-      display: false
-    },
-    htmlLegend: {
-      containerId: id
-    },
+    legend: { display: false },
+    htmlLegend: { containerId: id },
     tooltip: {
       enabled: false,
       position: 'nearest',
       external: props.tooltip ? chartTooltip : undefined
     },
-    filler: {
-      propagate: false
-    }
+    filler: { propagate: false }
   },
   scales: {
     x: {
       display: props.xaxis,
-      grid: {
-        display: false
-      }
+      grid: { display: false }
     },
     y: {
       beginAtZero: true,
       min: 0,
       max: 10,
-      ticks: {
-        stepSize: 5
-      },
+      ticks: { stepSize: 5 },
       display: props.grid || props.yaxis,
       labels: false,
-      grid: {
-        display: props.grid
-      },
-      title: {
-        display: false
-      }
+      grid: { display: props.grid },
+      title: { display: false }
     }
   }
 }))
@@ -115,22 +101,7 @@ const chartData = computed<ChartJSData<'line'>>(() => ({
   datasets: props.data.map(({ label, values }, index) => ({
     label,
     data: values,
-    backgroundColor: (context) => {
-      const bgColor = colors[props.data[index].color || 'blue'][500] + '35'
-
-      if (!context.chart.chartArea) return
-
-      const {
-        ctx,
-        chartArea: { top, bottom }
-      } = context.chart
-      const bgGradient = ctx.createLinearGradient(0, top, 0, bottom)
-
-      bgGradient.addColorStop(0, bgColor)
-      bgGradient.addColorStop(1, bgColor)
-
-      return bgGradient
-    },
+    backgroundColor: colors[props.data[index].color || 'blue'][500] + '35',
     tension: 0,
     borderColor: colors[props.data[index].color || 'blue'][500],
     borderWidth: 2,

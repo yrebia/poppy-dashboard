@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { capitalize } from 'vue'
 
+const route = useRoute()
+
 const childs = [
   {
     name: 'Lucas',
@@ -33,12 +35,19 @@ const childs = [
     ]
   }
 ]
+
+const selectedChild = computed(() =>
+  childs.find((child) => child.name.toLowerCase() === route.params.name)
+)
 </script>
 <template>
   <div class="h-[calc(100vh-64px)] py-6 bg-neutral-50">
     <div class="flex items-center max-w-6xl h-28 px-6 mx-auto">
       <h1 class="text-4xl font-semibold">
         {{ capitalize($route.params.name as string) }}
+        <span class="text-2xl font-normal ml-2 text-neutral-600">
+          {{ selectedChild?.age || 0 }} ans
+        </span>
       </h1>
     </div>
     <hr class="border-neutral-200" />
@@ -69,10 +78,7 @@ const childs = [
               :data="[
                 {
                   label: 'Note',
-                  values:
-                    childs.find(
-                      (child) => child.name.toLowerCase() === $route.params.name
-                    )?.progressions[0].data || [],
+                  values: selectedChild?.progressions[0].data || [],
                   color: 'blue'
                 }
               ]"
@@ -106,10 +112,7 @@ const childs = [
               :data="[
                 {
                   label: 'Note',
-                  values:
-                    childs.find(
-                      (child) => child.name.toLowerCase() === $route.params.name
-                    )?.progressions[1].data || [],
+                  values: selectedChild?.progressions[1].data || [],
                   color: 'blue'
                 }
               ]"
@@ -143,10 +146,7 @@ const childs = [
               :data="[
                 {
                   label: 'Note',
-                  values:
-                    childs.find(
-                      (child) => child.name.toLowerCase() === $route.params.name
-                    )?.progressions[2].data || [],
+                  values: selectedChild?.progressions[2].data || [],
                   color: 'blue'
                 }
               ]"

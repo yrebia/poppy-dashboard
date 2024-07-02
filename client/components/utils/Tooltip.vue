@@ -40,7 +40,7 @@ withDefaults(
         </code>
       </li>
     </ul>
-    <div class="px-3 pb-1.5 text-xs text-neutral-600">
+    <div class="px-3 pb-1.5 text-xs text-center text-neutral-600">
       {{ $props.title }}
     </div>
   </div>
